@@ -1,0 +1,87 @@
+
+rm(list = ls()) #Clear all the data.
+setwd("~/Documents/DevRabbits/images") #Set the directory.
+#install.packages("tesseract")
+library(tesseract)
+library(magick)
+eng <- tesseract("eng")
+
+####### IMAGE 1 ######
+text1 <- tesseract::ocr("1.jpeg", engine = eng)
+cat(text1)
+write(text1, "text1.txt")
+#write.table(text1,"text1.txt")
+print(text1)
+#results <- tesseract::ocr_data("1.jpeg", engine = eng)
+#print(results, n = 20)
+#install.packages("magick")
+#tesseract_info()
+# image_trim("1.jpeg")
+# img <- load.image("1.jpeg")
+# getwd()
+# file <- system.file("/Users/chanduboss/Documents/DevRabbits/images/1.jpeg",package='imager')
+
+library(magick)
+library(magrittr)
+text2 <- image_read("2.jpeg") %>%
+  image_resize("2000") %>%
+  image_convert(colorspace = 'gray') %>%
+  image_trim() %>%
+  image_ocr()
+
+
+######### IMAGE 2 ########
+text2 <- tesseract::ocr("2.jpeg", engine = eng)
+cat(text2)
+write(text2, "text2.txt")
+#write.table(text2,"text2.txt")
+print(text2)
+
+######## IMAGE 3 #########
+
+text3 <- tesseract::ocr("3.jpeg", engine = eng)
+cat(text3)
+write(text3, "text3.txt")
+#write.table(text3,"text3.txt")
+print(text3)
+
+######### IMAGE 4 ##########
+text4 <- tesseract::ocr("4.jpeg", engine = eng)
+cat(text4)
+write(text4, "text4.txt")
+#write.table(text4,"text4.txt")
+print(text4)
+
+############ IMAGE 5 ########
+text5 <- tesseract::ocr("5.jpeg", engine = eng)
+cat(text5)
+write(text5, "text5.txt")
+#write.table(text5,"text5.txt")
+print(text5)
+
+########## IMAGE 6 ##########
+text6 <- tesseract::ocr("6.jpeg", engine = eng)
+cat(text6)
+write(text6, "text6.txt")
+#write.table(text6,"text6.txt")
+print(text6)
+
+######## IMAGE 7 #########
+text7 <- tesseract::ocr("7.jpeg", engine = eng)
+cat(text7)
+write(text7, "text7.txt")
+#write.table(text7,"text7.txt")
+print(text7)
+
+########### IMAGE 8 ##########
+text8 <- tesseract::ocr("8.jpeg", engine = eng)
+cat(text8)
+write(text8, "text8.txt")
+#write.table(text8,"text8.txt")
+print(text8)
+
+
+library(readtext)
+DATA_DIR <- system.file("test7.txt", package = "readtext")
+T1= read.table("text7.txt", sep = "\t")
+str(T1)
